@@ -1,7 +1,9 @@
+import { RouterProvider } from 'react-router-dom';
+
 import Navigations from './routes';
 
 const App = () => {
-  return <Navigations />;
+  return <RouterProvider router={Navigations} />;
 };
 
 export default App;
