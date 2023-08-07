@@ -5,6 +5,8 @@ import { palette } from '../../utils';
 export const Wrapper = styled.div`
   background-color: ${palette.primary};
   padding: 10px;
+  position: fixed;
+  width: 100%;
 `;
 
 export const SearchWrapper = styled.div`

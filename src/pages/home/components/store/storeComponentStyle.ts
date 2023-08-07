@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
 
 export const StoreWrapper = styled.div`
   height: 230px;
-  height: 230px;
   border-radius: 18px;
   background-color: ${palette.white};
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
