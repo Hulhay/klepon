@@ -1,7 +1,8 @@
 {
   "id": {
     "home": {
-      "search_placeholder": "Mau makan apa hari ini?"
+      "search_placeholder": "Mau makan apa hari ini?",
+      "alt_store_image_placeholder": "image of {{store_name}}"
     }
   }
 }
