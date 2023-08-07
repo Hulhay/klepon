@@ -1,12 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Navbar } from '../components';
-import { Home, Order, Profile } from '../pages';
+import { Home, NotFound, Order, Profile } from '../pages';
 
 const Navigations = createBrowserRouter([
   {
     path: '/',
     element: <Navbar />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
