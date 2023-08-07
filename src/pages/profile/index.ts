@@ -1,3 +1,1 @@
-import Profile from './profilePage';
-
-export default Profile;
+export { default as Profile } from './profilePage';

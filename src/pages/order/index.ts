@@ -1,3 +1,1 @@
-import Order from './orderPage';
-
-export default Order;
+export { default as Order } from './orderPage';

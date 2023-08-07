@@ -1,4 +1,4 @@
-import Navbar from './navbar';
-import SearchComponent from './search';
+export { Navbar } from './navbar';
+export { SearchComponent } from './search';
 
-export { Navbar, SearchComponent };
+// export { Navbar, SearchComponent };

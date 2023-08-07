@@ -1,5 +1,3 @@
-import Home from './home';
-import Order from './order';
-import Profile from './profile';
-
-export { Home, Order, Profile };
+export { Home } from './home';
+export { Order } from './order';
+export { Profile } from './profile';
