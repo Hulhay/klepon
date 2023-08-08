@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { palette } from '../../utils';
+import { palette } from '../../../../utils';
 
 export const Wrapper = styled.div`
   background-color: ${palette.primary};

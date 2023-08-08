@@ -7,7 +7,7 @@ interface ISearchComponent {
   placeholder?: string;
 }
 
-const SearchComponent = ({ placeholder }: ISearchComponent) => {
+const Search = ({ placeholder }: ISearchComponent) => {
   const [keyword, setKeyword] = useState<string>('');
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,4 +39,4 @@ const SearchComponent = ({ placeholder }: ISearchComponent) => {
   );
 };
 
-export default memo(SearchComponent);
+export default memo(Search);
