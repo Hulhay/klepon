@@ -32,10 +32,6 @@ export const SearchWrapper = styled.div`
     width: 20px;
     height: 20px;
   }
-
-  .hidden {
-    visibility: hidden;
-  }
 `;
 
 export const SearchBar = styled.input`

@@ -4,9 +4,17 @@
       "search_placeholder": "Mau makan apa hari ini?",
       "alt_store_image_placeholder": "image of {{store_name}}"
     },
+    "menu": {
+      "search_placeholder": "Cari makanan di kedai ini",
+      "alt_menu_image_placeholder": "image of {{name}}",
+      "sold_out": "Produk tidak tersedia"
+    },
     "not_found": {
       "title": "Halaman yang kamu tuju tidak ditemukan",
       "back": "Kembali ke Beranda"
+    },
+    "button": {
+      "add": "Tambah"
     }
   }
 }

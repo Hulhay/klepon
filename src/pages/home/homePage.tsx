@@ -1,4 +1,3 @@
-import { lang } from '../../utils';
 import { Search, Store } from './components';
 import { storeDummy } from './dummy';
 import { Wrapper } from './homePageStyle';
@@ -7,7 +6,7 @@ const Home = () => {
   const stores = storeDummy;
   return (
     <>
-      <Search placeholder={lang('home.search_placeholder')} />
+      <Search />
       <Wrapper>
         {stores.map((store) => {
           return (

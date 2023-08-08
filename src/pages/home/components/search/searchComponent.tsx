@@ -1,13 +1,10 @@
 import React, { memo, useState } from 'react';
 import { HiOutlineSearch, HiXCircle } from 'react-icons/hi';
 
+import { lang } from '../../../../utils';
 import { SearchBar, SearchWrapper, Wrapper } from './searchComponentStyle';
 
-interface ISearchComponent {
-  placeholder?: string;
-}
-
-const Search = ({ placeholder }: ISearchComponent) => {
+const Search = () => {
   const [keyword, setKeyword] = useState<string>('');
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +22,7 @@ const Search = ({ placeholder }: ISearchComponent) => {
       <SearchWrapper>
         <HiOutlineSearch className="search-icon" />
         <SearchBar
-          placeholder={placeholder}
+          placeholder={lang('home.search_placeholder')}
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={keyword}

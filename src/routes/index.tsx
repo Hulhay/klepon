@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Navbar } from '../components';
-import { Home, NotFound, Order, Profile } from '../pages';
+import { Home, Menu, NotFound, Order, Profile } from '../pages';
 
 const Navigations = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const Navigations = createBrowserRouter([
         element: <Profile />,
       },
     ],
+  },
+  {
+    path: 'store/:storeUUID/menu',
+    element: <Menu />,
   },
 ]);
 

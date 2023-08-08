@@ -12,11 +12,7 @@ const Navbar = () => {
   const [hide, setHide] = useState<string>('');
 
   useEffect(() => {
-    if (scroll.y > 50 && scroll.y - scroll.curY > 0) {
-      setHide('hidden');
-    } else {
-      setHide('');
-    }
+    setHide(scroll.y > 50 && scroll.y - scroll.curY > 0 ? 'hidden' : '');
   }, [scroll.y, scroll.curY]);
 
   return (
