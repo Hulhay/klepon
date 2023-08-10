@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   gap: 11px;
 `;
 
-export const MenuDetail = styled.div`
+export const ProductDetail = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

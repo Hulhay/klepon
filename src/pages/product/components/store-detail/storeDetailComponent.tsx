@@ -1,12 +1,7 @@
 import { memo } from 'react';
 
+import { IStoreDetail } from '../../../../interface';
 import { Wrapper } from './storeDetailComponentStyle';
-
-interface IStoreDetail {
-  storeName: string;
-  ownerName: string;
-  ownerPhoneNumber: string;
-}
 
 const StoreDetail = ({ storeName, ownerName, ownerPhoneNumber }: IStoreDetail) => {
   return (

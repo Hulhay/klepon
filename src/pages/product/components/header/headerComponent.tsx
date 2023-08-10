@@ -3,14 +3,11 @@ import { HiArrowLeft, HiOutlineSearch, HiOutlineX } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import { useScroll } from '../../../../hooks';
+import { IHeaderProduct } from '../../../../interface';
 import { lang } from '../../../../utils';
 import { HeaderWrapper, SearchBar, StoreName, Wrapper } from './headerComponentStyle';
 
-interface IHeaderMenu {
-  storeName: string;
-}
-
-const Header = ({ storeName }: IHeaderMenu) => {
+const Header = ({ storeName }: IHeaderProduct) => {
   const scroll = useScroll();
   const [showBar, setShowBar] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
@@ -44,7 +41,7 @@ const Header = ({ storeName }: IHeaderMenu) => {
         {showBar ? (
           <>
             <SearchBar
-              placeholder={lang('menu.search_placeholder')}
+              placeholder={lang('product.search_placeholder')}
               onChange={onChange}
               onKeyDown={onKeyDown}
               value={keyword}

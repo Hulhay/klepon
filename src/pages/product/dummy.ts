@@ -1,4 +1,4 @@
-export const menuDummy = {
+export const productDummy = {
   store: {
     uuid: '3f53205f-01c7-11ed-9140-6a8c8fb6de13',
     store_name: 'Kedai Minum Sehat Jono',

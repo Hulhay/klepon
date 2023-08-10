@@ -4,10 +4,12 @@
       "search_placeholder": "Mau makan apa hari ini?",
       "alt_store_image_placeholder": "image of {{store_name}}"
     },
-    "menu": {
+    "product": {
       "search_placeholder": "Cari makanan di kedai ini",
-      "alt_menu_image_placeholder": "image of {{name}}",
-      "sold_out": "Produk tidak tersedia"
+      "alt_product_image_placeholder": "image of {{name}}",
+      "sold_out": "Produk tidak tersedia",
+      "item_in_cart": "{{qty}} item",
+      "items_in_cart": "{{qty}} items"
     },
     "not_found": {
       "title": "Halaman yang kamu tuju tidak ditemukan",

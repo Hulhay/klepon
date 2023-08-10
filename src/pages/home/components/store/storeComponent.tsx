@@ -14,7 +14,7 @@ interface IStore {
 const Store = ({ storeUUID, storeImage, storeName }: IStore) => {
   return (
     <Wrapper>
-      <Link to={`/store/${storeUUID}/menu`}>
+      <Link to={`/store/${storeUUID}/product`}>
         <StoreWrapper>
           <img
             src={storeImage ? storeImage : storePlaceholder}

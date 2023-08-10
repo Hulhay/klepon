@@ -1,52 +1,51 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 
 import storePlaceholder from '../../../../assets/store-placeholder.jpg';
 import { formatToRupiah } from '../../../../helpers';
+import { useAppDispatch } from '../../../../hooks/redux';
+import { IProduct } from '../../../../interface';
+import { addToCart, removeFromCart } from '../../../../store/reducer';
 import { lang } from '../../../../utils';
 import {
   AmountWrapper,
   ButtonAdd,
   Description,
-  MenuDetail,
+  ProductDetail,
   Wrapper,
-} from './menuComponentStyle';
+} from './productComponentStyle';
 
-interface IMenuItem {
-  name: string;
-  price: number;
-  imageURL: string;
-  isSoldOut: boolean;
-}
-
-const MenuItem = ({ name, price, imageURL, isSoldOut }: IMenuItem) => {
-  const [amount, setAmount] = useState<number>(0);
+const ProductItem = ({ uuid, name, price, imageURL, isSoldOut }: IProduct) => {
+  const dispatch = useAppDispatch();
+  const [qty, setQty] = useState<number>(0);
 
   const handlePlus = () => {
-    setAmount((amount) => amount + 1);
+    setQty((qty) => qty + 1);
+    dispatch(addToCart({ uuid, qty: 1, name, price }));
   };
 
   const handleMinus = () => {
-    setAmount((amount) => amount - 1);
+    setQty((qty) => qty - 1);
+    dispatch(removeFromCart({ uuid, qty, name, price }));
   };
 
   return (
     <Wrapper>
-      <MenuDetail>
+      <ProductDetail>
         <Description>
           <p>{name}</p>
           {isSoldOut ? (
-            <p className="sold-out">{lang('menu.sold_out')}</p>
+            <p className="sold-out">{lang('product.sold_out')}</p>
           ) : (
             <p>{formatToRupiah(price)}</p>
           )}
         </Description>
         <img
           src={imageURL ? imageURL : storePlaceholder}
-          alt={lang('menu.alt_menu_image_placeholder', { name: name })}
+          alt={lang('product.alt_product_image_placeholder', { name: name })}
         />
-      </MenuDetail>
-      {amount < 1 ? (
+      </ProductDetail>
+      {qty < 1 ? (
         <ButtonAdd
           className={isSoldOut ? 'disable' : ''}
           onClick={handlePlus}
@@ -57,7 +56,7 @@ const MenuItem = ({ name, price, imageURL, isSoldOut }: IMenuItem) => {
       ) : (
         <AmountWrapper>
           <AiOutlineMinusCircle className="action-btn" onClick={handleMinus} />
-          <span>{amount}</span>
+          <span>{qty}</span>
           <AiOutlinePlusCircle className="action-btn" onClick={handlePlus} />
         </AmountWrapper>
       )}
@@ -65,4 +64,4 @@ const MenuItem = ({ name, price, imageURL, isSoldOut }: IMenuItem) => {
   );
 };
 
-export default memo(MenuItem);
+export default memo(ProductItem);
