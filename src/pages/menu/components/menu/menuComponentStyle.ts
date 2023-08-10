@@ -44,9 +44,30 @@ export const ButtonAdd = styled.button`
   font-weight: 600;
   border-radius: 999px;
   align-self: end;
+  cursor: pointer;
 
   &.disable {
     color: ${palette.placeholder};
     border: 1px solid ${palette.placeholder};
+  }
+`;
+
+export const AmountWrapper = styled.div`
+  width: 82px;
+  color: ${palette.highlight};
+  font-weight: 600;
+  align-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: ${palette.text};
+  }
+
+  .action-btn {
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
   }
 `;
