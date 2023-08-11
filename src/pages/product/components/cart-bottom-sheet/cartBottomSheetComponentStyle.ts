@@ -12,6 +12,16 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-top: 2px solid ${palette.placeholder};
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(100%);
+
+  &.active {
+    transform: translateY(0);
+  }
+
+  &.hide {
+    transform: translateY(100%);
+  }
 `;
 
 export const Cart = styled.div`

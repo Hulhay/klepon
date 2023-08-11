@@ -30,13 +30,11 @@ const Product = () => {
           );
         })}
       </Wrapper>
-      {cart.totalItem > 0 && (
-        <CartBottomSheet
-          products={cart.products}
-          totalItem={cart.totalItem}
-          totalPrice={cart.totalPrice}
-        />
-      )}
+      <CartBottomSheet
+        products={cart.products}
+        totalItem={cart.totalItem}
+        totalPrice={cart.totalPrice}
+      />
     </>
   );
 };

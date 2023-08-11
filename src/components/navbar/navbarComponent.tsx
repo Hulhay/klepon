@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { GoHome, GoHomeFill, GoPerson, GoPersonFill } from 'react-icons/go';
 import { RiFileList3Fill, RiFileList3Line } from 'react-icons/ri';
 import { Link, Outlet, useLocation } from 'react-router-dom';
@@ -11,8 +11,12 @@ const Navbar = () => {
   const scroll = useScroll();
   const [hide, setHide] = useState<string>('');
 
-  useEffect(() => {
+  const handleScroll = useCallback(() => {
     setHide(scroll.y > 50 && scroll.y - scroll.curY > 0 ? 'hidden' : '');
+  }, [scroll.y, scroll.curY]);
+
+  useEffect(() => {
+    handleScroll();
   }, [scroll.y, scroll.curY]);
 
   return (
