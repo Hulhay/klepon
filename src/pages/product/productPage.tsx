@@ -1,6 +1,5 @@
 import { useAppSelector } from '../../hooks';
-import { Header, ProductItem, StoreDetail } from './components';
-import { CartBottomSheet } from './components/cart-bottom-sheet';
+import { CartBottomSheet, Header, ProductItem, StoreDetail } from './components';
 import { productDummy } from './dummy';
 import { Wrapper } from './productPageStyle';
 

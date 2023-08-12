@@ -3,6 +3,9 @@ import { styled } from 'styled-components';
 import { palette } from '../../../../utils';
 
 export const Wrapper = styled.div`
+  &.btn-action {
+  }
+
   width: 100%;
   border-bottom: 1px solid ${palette.placeholder};
   padding: 15px 0px 11px;
@@ -52,7 +55,11 @@ export const ButtonAdd = styled.button`
   }
 `;
 
-export const AmountWrapper = styled.div`
+export const ButtonActionWrapper = styled.div`
+  align-self: end;
+`;
+
+export const QtyCounter = styled.div`
   width: 82px;
   color: ${palette.highlight};
   font-weight: 600;
@@ -69,5 +76,32 @@ export const AmountWrapper = styled.div`
     width: 27px;
     height: 27px;
     cursor: pointer;
+  }
+`;
+
+export const ProductBottomSheet = styled.div`
+  width: 100%;
+  padding: 47px 17px 17px;
+  background-color: ${palette.highlight};
+  border-radius: 20px 20px 0px 0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition: transform 150ms ease-in-out;
+  transform: translateY(100%);
+  display: flex;
+  justify-content: center;
+
+  &.active {
+    transform: translateY(0);
+  }
+
+  img {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 1/1;
+    border: 0;
+    border-radius: 12px;
+    object-fit: cover;
   }
 `;
