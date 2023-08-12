@@ -80,9 +80,10 @@ export const QtyCounter = styled.div`
 `;
 
 export const ProductBottomSheet = styled.div`
+  z-index: 1;
   width: 100%;
   padding: 47px 17px 17px;
-  background-color: ${palette.highlight};
+  background-color: ${palette.primary};
   border-radius: 20px 20px 0px 0px;
   position: fixed;
   bottom: 0;
@@ -90,10 +91,18 @@ export const ProductBottomSheet = styled.div`
   transition: transform 150ms ease-in-out;
   transform: translateY(100%);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 25px;
 
   &.active {
     transform: translateY(0);
+  }
+
+  .description {
+    align-self: start;
+    padding-left: 10px;
   }
 
   img {
@@ -103,5 +112,32 @@ export const ProductBottomSheet = styled.div`
     border: 0;
     border-radius: 12px;
     object-fit: cover;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .name-btm-sheet {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: -7px;
+  }
+
+  .price-btm-sheet {
+    font-size: 18px;
+  }
+
+  .btn-add-btm-sheet {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: ${palette.white};
+    background-color: ${palette.highlight};
+  }
+
+  .disable {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: ${palette.white};
+    background-color: ${palette.placeholder};
   }
 `;

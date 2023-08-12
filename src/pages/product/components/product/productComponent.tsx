@@ -50,6 +50,12 @@ const ProductItem = ({ uuid, name, price, imageURL, isSoldOut }: IProduct) => {
     dispatch(removeFromCart({ uuid, qty, name, price }));
   };
 
+  const handlePlusBtmSheet = () => {
+    setIsBtmSheet(false);
+    setQty((qty) => qty + 1);
+    dispatch(addToCart({ uuid, qty: 1, name, price }));
+  };
+
   return (
     <>
       <Wrapper onClick={onOpen}>
@@ -93,6 +99,21 @@ const ProductItem = ({ uuid, name, price, imageURL, isSoldOut }: IProduct) => {
             src={imageURL ? imageURL : storePlaceholder}
             alt={lang('product.alt_product_image_placeholder', { name: name })}
           />
+          <Description className="description">
+            <p className="name-btm-sheet">{name}</p>
+            {isSoldOut ? (
+              <p className="sold-out price-btm-sheet">{lang('product.sold_out')}</p>
+            ) : (
+              <p className="price-btm-sheet">{formatToRupiah(price)}</p>
+            )}
+          </Description>
+          <ButtonAdd
+            className={`action-btn ${isSoldOut ? 'disable' : 'btn-add-btm-sheet'}`}
+            onClick={handlePlusBtmSheet}
+            disabled={isSoldOut}
+          >
+            {lang('button.add')}
+          </ButtonAdd>
         </ProductBottomSheet>
       </BottomSheet>
     </>
