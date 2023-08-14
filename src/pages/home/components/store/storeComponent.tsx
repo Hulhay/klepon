@@ -42,16 +42,14 @@ const Store = ({ storeUUID, storeImage, storeName }: IStore) => {
   };
 
   return (
-    <>
-      <Wrapper>
-        <StoreWrapper onClick={onClick}>
-          <img
-            src={storeImage ? storeImage : storePlaceholder}
-            alt={lang('home.alt_store_image_placeholder', { store_name: storeName })}
-          />
-          <p className="store-name">{storeName}</p>
-        </StoreWrapper>
-      </Wrapper>
+    <Wrapper>
+      <StoreWrapper onClick={onClick}>
+        <img
+          src={storeImage ? storeImage : storePlaceholder}
+          alt={lang('home.alt_store_image_placeholder', { store_name: storeName })}
+        />
+        <p className="store-name">{storeName}</p>
+      </StoreWrapper>
 
       <BottomSheet active={isBtmSheet} onClose={onClose}>
         <ConfirmationBottomSheet className={isBtmSheet ? 'active' : ''}>
@@ -66,7 +64,7 @@ const Store = ({ storeUUID, storeImage, storeName }: IStore) => {
           </ButtonActionWrapper>
         </ConfirmationBottomSheet>
       </BottomSheet>
-    </>
+    </Wrapper>
   );
 };
 
