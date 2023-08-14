@@ -3,6 +3,7 @@ export interface IHeaderProduct {
 }
 
 export interface IProductCart {
+  storeUUID: string;
   uuid: string;
   name: string;
   qty: number;
@@ -10,6 +11,7 @@ export interface IProductCart {
 }
 
 export interface IProduct {
+  storeUUID: string;
   uuid: string;
   name: string;
   price: number;

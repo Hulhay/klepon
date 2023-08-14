@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
 import { HiOutlineSearch, HiXCircle } from 'react-icons/hi';
 
 import { lang } from '../../../../utils';

@@ -2,7 +2,9 @@
   "id": {
     "home": {
       "search_placeholder": "Mau makan apa hari ini?",
-      "alt_store_image_placeholder": "image of {{store_name}}"
+      "alt_store_image_placeholder": "image of {{store_name}}",
+      "change_store_confirmation": "Ingin memesan dari kedai ini?",
+      "change_store_confirmation_desc": "Jika dilanjutkan, pesanan sebelumnya harus kami hapus terlebih dahulu."
     },
     "product": {
       "search_placeholder": "Cari makanan di kedai ini",
@@ -16,7 +18,9 @@
       "back": "Kembali ke Beranda"
     },
     "button": {
-      "add": "Tambah"
+      "add": "Tambah",
+      "cancel": "Batal",
+      "go_ahead": "Ya, lanjut"
     }
   }
 }

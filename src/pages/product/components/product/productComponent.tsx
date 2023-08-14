@@ -18,7 +18,7 @@ import {
   Wrapper,
 } from './productComponentStyle';
 
-const ProductItem = ({ uuid, name, price, imageURL, isSoldOut }: IProduct) => {
+const ProductItem = ({ uuid, name, price, imageURL, isSoldOut, storeUUID }: IProduct) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
   const [qty, setQty] = useState<number>(0);
@@ -42,18 +42,18 @@ const ProductItem = ({ uuid, name, price, imageURL, isSoldOut }: IProduct) => {
 
   const handlePlus = () => {
     setQty((qty) => qty + 1);
-    dispatch(addToCart({ uuid, qty: 1, name, price }));
+    dispatch(addToCart({ uuid, qty: 1, name, price, storeUUID }));
   };
 
   const handleMinus = () => {
     setQty((qty) => qty - 1);
-    dispatch(removeFromCart({ uuid, qty, name, price }));
+    dispatch(removeFromCart({ uuid, qty, name, price, storeUUID }));
   };
 
   const handlePlusBtmSheet = () => {
     setIsBtmSheet(false);
     setQty((qty) => qty + 1);
-    dispatch(addToCart({ uuid, qty: 1, name, price }));
+    dispatch(addToCart({ uuid, qty: 1, name, price, storeUUID }));
   };
 
   return (

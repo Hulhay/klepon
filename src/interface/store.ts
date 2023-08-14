@@ -3,3 +3,9 @@ export interface IStoreDetail {
   ownerName: string;
   ownerPhoneNumber: string;
 }
+
+export interface IStore {
+  storeUUID: string;
+  storeImage: string;
+  storeName: string;
+}

@@ -1,9 +1,12 @@
+import { useParams } from 'react-router-dom';
+
 import { useAppSelector } from '../../hooks';
 import { CartBottomSheet, Header, ProductItem, StoreDetail } from './components';
 import { productDummy } from './dummy';
 import { Wrapper } from './productPageStyle';
 
 const Product = () => {
+  const { storeUUID } = useParams<{ storeUUID: string }>();
   const data = productDummy;
   const cart = useAppSelector((state) => state.cart);
 
@@ -25,11 +28,13 @@ const Product = () => {
               price={product.price}
               imageURL={product.photoURL}
               isSoldOut={product.is_sold_out}
+              storeUUID={storeUUID || ''}
             />
           );
         })}
       </Wrapper>
       <CartBottomSheet
+        storeUUID={storeUUID || ''}
         products={cart.products}
         totalItem={cart.totalItem}
         totalPrice={cart.totalPrice}
