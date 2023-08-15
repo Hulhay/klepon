@@ -1,24 +1,44 @@
+import { useEffect, useState } from 'react';
+
+import { Loading } from '../../components';
+import { GetStoresResponse } from '../../interface';
+import { GetStores } from '../../service';
 import { Search, Store } from './components';
-import { storeDummy } from './dummy';
 import { Wrapper } from './homePageStyle';
 
 const Home = () => {
-  const stores = storeDummy;
+  const [stores, setStores] = useState<GetStoresResponse>();
+  const [keywordRequest, setKeywordRequest] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoading(true);
+    GetStores(keywordRequest)
+      .then((res) => {
+        setStores(res);
+      })
+      .finally(() => setLoading(false));
+  }, [keywordRequest]);
+
   return (
     <>
-      <Search />
-      <Wrapper>
-        {stores.map((store) => {
-          return (
-            <Store
-              key={store.uuid}
-              storeUUID={store.uuid}
-              storeImage={store.store_photo_url}
-              storeName={store.store_name}
-            />
-          );
-        })}
-      </Wrapper>
+      <Search setKeywordRequest={setKeywordRequest} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <Wrapper>
+          {stores?.data.map((store) => {
+            return (
+              <Store
+                key={store.uuid}
+                storeUUID={store.uuid}
+                storeImage={store.store_photo_url}
+                storeName={store.store_name}
+              />
+            );
+          })}
+        </Wrapper>
+      )}
     </>
   );
 };
