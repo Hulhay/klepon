@@ -4,8 +4,8 @@ const Spinner = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="91px"
-      height="91px"
+      width="50px"
+      height="50px"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
     >
@@ -13,7 +13,8 @@ const Spinner = () => {
         cx="50"
         cy="50"
         fill="none"
-        stroke="#ffffff"
+        stroke="#000000"
+        opacity={0.5}
         strokeWidth="8"
         r="24"
         strokeDasharray="113.09733552923255 39.69911184307752"

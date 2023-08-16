@@ -1,13 +1,13 @@
 import { memo } from 'react';
 
-import { LoadingPage } from './loadingComponentStyle';
+import { LoadingComponent } from './loadingComponentStyle';
 import Spinner from './spinner';
 
 const Loading = () => {
   return (
-    <LoadingPage>
+    <LoadingComponent>
       <Spinner />
-    </LoadingPage>
+    </LoadingComponent>
   );
 };
 

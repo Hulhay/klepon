@@ -5,11 +5,7 @@ import { HiOutlineSearch, HiXCircle } from 'react-icons/hi';
 import { lang } from '../../../../utils';
 import { SearchBar, SearchWrapper, Wrapper } from './searchComponentStyle';
 
-export interface ISearch {
-  setKeywordRequest: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Search = ({ setKeywordRequest }: ISearch) => {
+const Search = () => {
   const [keyword, setKeyword] = useState<string>('');
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,12 +13,13 @@ const Search = ({ setKeywordRequest }: ISearch) => {
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    setKeywordRequest(event.key === 'Enter' && keyword.length > 2 ? keyword : '');
+    if (event.key === 'Enter' && keyword.length > 2) {
+      console.log(keyword);
+    }
   };
 
   const onClear = () => {
     setKeyword('');
-    setKeywordRequest('');
   };
 
   return (
