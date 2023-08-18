@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { palette } from '../../../../utils';
 
 export const Wrapper = styled.div`
-  width: 45%;
-  max-width: 170px;
+  width: 170px;
   height: 230px;
 
   a {

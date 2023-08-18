@@ -78,8 +78,8 @@ const Home = () => {
             />
           );
         })}
-        {loading ? <Loading /> : ''}
       </Wrapper>
+      {loading ? <Loading /> : ''}
     </>
   );
 };
