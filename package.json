@@ -1,6 +1,6 @@
 {
   "name": "pujas-kita",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

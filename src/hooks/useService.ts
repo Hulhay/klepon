@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { BaseURL } from '../config';
 
@@ -14,6 +15,7 @@ export interface IPromise<T> {
 }
 
 export const useService = <T>({ path, options, loadOnStart }: IPromise<T>) => {
+  const navigate = useNavigate();
   const url = `${BaseURL}/${path}`;
   const [response, setResponse] = useState<T>();
   const [error, setError] = useState<string>();
@@ -30,38 +32,15 @@ export const useService = <T>({ path, options, loadOnStart }: IPromise<T>) => {
   const sendRequest = async () => {
     setLoading(true);
     try {
-      switch (options.method) {
-        case 'GET': {
-          const { data } = await axios.get<T>(url, options);
-          setResponse(data);
-          break;
-        }
-        case 'POST': {
-          const { data } = await axios.post<T>(url, options.data, options);
-          setResponse(data);
-          break;
-        }
-        case 'PATCH': {
-          const { data } = await axios.patch<T>(url, options.data, options);
-          setResponse(data);
-          break;
-        }
-        case 'PUT': {
-          const { data } = await axios.put<T>(url, options.data, options);
-          setResponse(data);
-          break;
-        }
-        case 'DELETE': {
-          const { data } = await axios.delete<T>(url, options);
-          setResponse(data);
-          break;
-        }
-        default:
-          setResponse(undefined);
-      }
+      const { data } = await axios<T>(url, options);
+      setResponse(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setError(error.message);
+        console.log(error.message);
+        if (error.message.includes('Network Error')) {
+          navigate('/network-error');
+        }
       }
     } finally {
       setLoading(false);

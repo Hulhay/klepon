@@ -17,6 +17,10 @@
       "title": "Halaman yang kamu tuju tidak ditemukan",
       "back": "Kembali ke Beranda"
     },
+    "network_error": {
+      "title": "Server sedang nonaktif. Silakan hubungi developer",
+      "go_to_author": "Hubungi developer"
+    },
     "button": {
       "add": "Tambah",
       "cancel": "Batal",

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Navbar } from '../components';
-import { Home, NotFound, Order, Product, Profile } from '../pages';
+import { Home, NetworkError, NotFound, Order, Product, Profile } from '../pages';
 
 const Navigations = createBrowserRouter([
   {
@@ -26,6 +26,10 @@ const Navigations = createBrowserRouter([
   {
     path: 'store/:storeUUID/product',
     element: <Product />,
+  },
+  {
+    path: 'network-error',
+    element: <NetworkError />,
   },
 ]);
 
