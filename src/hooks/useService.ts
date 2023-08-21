@@ -6,12 +6,14 @@ import { BaseURL } from '../config';
 export interface IPromise<T> {
   path: string;
   options: AxiosRequestConfig;
+  loadOnStart: boolean;
   response?: T;
   error?: string;
-  loading: boolean;
+  loading?: boolean;
+  request?: () => void;
 }
 
-export const useService = <T>({ path, options }: IPromise<T>) => {
+export const useService = <T>({ path, options, loadOnStart }: IPromise<T>) => {
   const url = `${BaseURL}/${path}`;
   const [response, setResponse] = useState<T>();
   const [error, setError] = useState<string>();
@@ -25,34 +27,33 @@ export const useService = <T>({ path, options }: IPromise<T>) => {
     },
   };
 
-  const callAPI = async () => {
+  const sendRequest = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-
       switch (options.method) {
         case 'GET': {
-          const resp = await axios.get<T>(url, options);
-          setResponse(resp.data);
+          const { data } = await axios.get<T>(url, options);
+          setResponse(data);
           break;
         }
         case 'POST': {
-          const resp = await axios.post<T>(url, options.data, options);
-          setResponse(resp.data);
+          const { data } = await axios.post<T>(url, options.data, options);
+          setResponse(data);
           break;
         }
         case 'PATCH': {
-          const resp = await axios.patch<T>(url, options.data, options);
-          setResponse(resp.data);
+          const { data } = await axios.patch<T>(url, options.data, options);
+          setResponse(data);
           break;
         }
         case 'PUT': {
-          const resp = await axios.put<T>(url, options.data, options);
-          setResponse(resp.data);
+          const { data } = await axios.put<T>(url, options.data, options);
+          setResponse(data);
           break;
         }
         case 'DELETE': {
-          const resp = await axios.delete<T>(url, options);
-          setResponse(resp.data);
+          const { data } = await axios.delete<T>(url, options);
+          setResponse(data);
           break;
         }
         default:
@@ -60,20 +61,27 @@ export const useService = <T>({ path, options }: IPromise<T>) => {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setError(error.response?.data.meta.message);
+        setError(error.message);
       }
     } finally {
       setLoading(false);
     }
   };
 
+  const request = async () => {
+    await sendRequest();
+  };
+
   useEffect(() => {
-    callAPI();
-  }, [path]);
+    if (loadOnStart) {
+      sendRequest();
+    }
+  }, [url, options, loadOnStart]);
 
   return {
     response,
     error,
     loading,
+    request,
   };
 };
