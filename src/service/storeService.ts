@@ -1,21 +1,19 @@
-import axios from 'axios';
+import { Method } from 'axios';
 
-import { BaseURL, SizePagination } from '../config';
+import { SizePagination } from '../config';
+import { useService } from '../hooks';
 import { GetStoresResponse } from '../interface';
 
 export default {
-  getStores: async (page: number, keyword?: string) => {
-    const url = `${BaseURL}/api/v1/stores`;
-    const { data } = await axios.get<GetStoresResponse>(`${url}`, {
-      headers: {
-        'ngrok-skip-browser-warning': true,
+  getStores: (page: number) => {
+    const { response, loading, request } = useService<GetStoresResponse>({
+      path: 'api/v1/stores',
+      options: {
+        method: 'GET' as Method,
+        params: { page, size: SizePagination() },
       },
-      params: {
-        page: page,
-        size: SizePagination(),
-        keyword,
-      },
+      loadOnStart: false,
     });
-    return data;
+    return { response, loading, request };
   },
 };
