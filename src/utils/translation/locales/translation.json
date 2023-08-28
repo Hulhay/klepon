@@ -13,6 +13,16 @@
       "item_in_cart": "{{qty}} item",
       "items_in_cart": "{{qty}} items"
     },
+    "login": {
+      "email_placeholder": "email",
+      "password_placeholder": "password",
+      "err_empty_email": "Email harus diisi",
+      "err_invalid_email": "Email tidak valid",
+      "err_empty_password": "Password harus diisi",
+      "err_short_password": "Panjang password minimal 8 karakter",
+      "register_question": "Belum punya akun?",
+      "create_here": "Buat disini"
+    },
     "not_found": {
       "title": "Halaman yang kamu tuju tidak ditemukan",
       "back": "Kembali ke Beranda"
@@ -24,7 +34,8 @@
     "button": {
       "add": "Tambah",
       "cancel": "Batal",
-      "go_ahead": "Ya, lanjut"
+      "go_ahead": "Ya, lanjut",
+      "login": "Masuk"
     }
   }
 }
