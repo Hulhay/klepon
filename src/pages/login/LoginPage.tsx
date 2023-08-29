@@ -74,7 +74,7 @@ const Login = () => {
       <ButtonLogin type="submit">{lang('button.login')}</ButtonLogin>
       <p>
         {lang('login.register_question')}{' '}
-        <Link to={'#'}>{lang('login.create_here')}</Link>
+        <Link to={'/register'}>{lang('login.create_here')}</Link>
       </p>
     </FormLogin>
   );

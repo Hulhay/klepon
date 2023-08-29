@@ -23,6 +23,23 @@
       "register_question": "Belum punya akun?",
       "create_here": "Buat disini"
     },
+    "register": {
+      "name_placeholder": "name",
+      "email_placeholder": "email",
+      "phone_number_placeholder": "nomor telepon",
+      "password_placeholder": "password",
+      "confirm_password_placeholder": "konfirmasi password",
+      "err_empty_name": "Nama harus diisi",
+      "err_empty_email": "Email harus diisi",
+      "err_invalid_email": "Email tidak valid",
+      "err_empty_phone_number": "Nomor telepon harus diisi",
+      "err_invalid_phone_number": "Nomor telepon tidak valid",
+      "err_empty_password": "Password harus diisi",
+      "err_short_password": "Panjang password minimal 8 karakter",
+      "err_password_not_match": "Password tidak cocok",
+      "login_question": "Sudah punya akun?",
+      "login_here": "Masuk"
+    },
     "not_found": {
       "title": "Halaman yang kamu tuju tidak ditemukan",
       "back": "Kembali ke Beranda"
@@ -35,7 +52,8 @@
       "add": "Tambah",
       "cancel": "Batal",
       "go_ahead": "Ya, lanjut",
-      "login": "Masuk"
+      "login": "Masuk",
+      "register": "Daftar"
     }
   }
 }

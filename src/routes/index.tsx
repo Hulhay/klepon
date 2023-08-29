@@ -1,7 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Navbar } from '../components';
-import { Home, Login, NetworkError, NotFound, Order, Product, Profile } from '../pages';
+import {
+  Home,
+  Login,
+  NetworkError,
+  NotFound,
+  Order,
+  Product,
+  Profile,
+  Register,
+} from '../pages';
 
 const Navigations = createBrowserRouter([
   {
@@ -30,6 +39,10 @@ const Navigations = createBrowserRouter([
   {
     path: 'login',
     element: <Login />,
+  },
+  {
+    path: 'register',
+    element: <Register />,
   },
   {
     path: 'network-error',
