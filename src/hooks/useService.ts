@@ -38,7 +38,7 @@ export const useService = <T>({ path, options, loadOnStart }: IPromise<T>) => {
       if (axios.isAxiosError(error)) {
         setError(error.message);
         console.log(error.message);
-        if (error.message.includes('Request failed with status code 404')) {
+        if (error.message.includes('Network Error')) {
           navigate('/network-error');
         }
       }

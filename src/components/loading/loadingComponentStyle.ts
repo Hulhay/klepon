@@ -5,4 +5,8 @@ export const LoadingComponent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.midScreen {
+    height: 100vh;
+  }
 `;

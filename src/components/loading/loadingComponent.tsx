@@ -3,9 +3,13 @@ import { memo } from 'react';
 import { LoadingComponent } from './loadingComponentStyle';
 import Spinner from './spinner';
 
-const Loading = () => {
+export interface ILoading {
+  midScreen?: boolean;
+}
+
+const Loading = ({ midScreen }: ILoading) => {
   return (
-    <LoadingComponent>
+    <LoadingComponent className={midScreen ? 'midScreen' : ''}>
       <Spinner />
     </LoadingComponent>
   );
