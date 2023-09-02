@@ -31,9 +31,11 @@
       "confirm_password_placeholder": "konfirmasi password",
       "err_empty_name": "Nama harus diisi",
       "err_empty_email": "Email harus diisi",
+      "err_email_exists": "Email sudah digunakan",
       "err_invalid_email": "Email tidak valid",
       "err_empty_phone_number": "Nomor telepon harus diisi",
       "err_invalid_phone_number": "Nomor telepon tidak valid",
+      "err_phone_number_exists": "Nomor telepon sudah digunakan",
       "err_empty_password": "Password harus diisi",
       "err_short_password": "Panjang password minimal 8 karakter",
       "err_password_not_match": "Password tidak cocok",
@@ -53,7 +55,8 @@
       "cancel": "Batal",
       "go_ahead": "Ya, lanjut",
       "login": "Masuk",
-      "register": "Daftar"
+      "register": "Daftar",
+      "loading": "Memuat..."
     }
   }
 }

@@ -61,4 +61,8 @@ export const ButtonRegister = styled.button`
   font-weight: 600;
   border-radius: 999px;
   cursor: pointer;
+
+  &.loading {
+    opacity: 50%;
+  }
 `;

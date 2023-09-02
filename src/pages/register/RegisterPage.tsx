@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import pujasKitaLogo from '../../assets/pujaskitalogo.png';
 import { validateEmailFormat, validatePhoneNumberFormat } from '../../helpers';
+import { IRegister } from '../../interface';
+import { authService } from '../../service';
 import { lang } from '../../utils';
 import { ButtonRegister, Field, FormRegister } from './RegisterPageStyle';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -17,6 +20,13 @@ const Register = () => {
   const [invalidPhoneNumber, setInvalidPhoneNumber] = useState<string>('');
   const [invalidPassword, setInvalidPassword] = useState<string>('');
   const [invalidConfirmPassword, setInvalidConfirmPassword] = useState<string>('');
+  const [registerData, setRegisterData] = useState<IRegister>({
+    name,
+    email,
+    password,
+    phoneNumber,
+  });
+  const { response, error, loading, request } = authService.register(registerData);
 
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInvalidName('');
@@ -87,8 +97,32 @@ const Register = () => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateRequest()) return;
-    console.log({ name, email, phoneNumber, password });
+    request();
   };
+
+  useEffect(() => {
+    setRegisterData({
+      name,
+      email,
+      password,
+      phoneNumber,
+    });
+  }, [name, email, password, phoneNumber]);
+
+  useEffect(() => {
+    if (error?.includes('email already exists')) {
+      setInvalidEmail(lang('register.err_email_exists'));
+    }
+    if (error?.includes('phone number already exists')) {
+      setInvalidPhoneNumber(lang('register.err_phone_number_exists'));
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (response?.meta.code === 200) {
+      navigate('/login');
+    }
+  }, [response]);
 
   return (
     <FormRegister onSubmit={onSubmit}>
@@ -140,7 +174,13 @@ const Register = () => {
         />
         <p>{invalidConfirmPassword}</p>
       </div>
-      <ButtonRegister type="submit">{lang('button.register')}</ButtonRegister>
+      <ButtonRegister
+        type="submit"
+        disabled={loading}
+        className={loading ? 'loading' : ''}
+      >
+        {loading ? lang('button.loading') : lang('button.register')}
+      </ButtonRegister>
       <p>
         {lang('register.login_question')}{' '}
         <Link to={'/login'}>{lang('register.login_here')}</Link>

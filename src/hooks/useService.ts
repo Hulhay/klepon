@@ -36,8 +36,7 @@ export const useService = <T>({ path, options, loadOnStart }: IPromise<T>) => {
       setResponse(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setError(error.message);
-        console.log(error.message);
+        setError(error.response?.data.meta.message);
         if (error.message.includes('Network Error')) {
           navigate('/network-error');
         }
