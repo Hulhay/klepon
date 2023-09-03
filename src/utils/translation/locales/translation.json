@@ -18,8 +18,10 @@
       "password_placeholder": "password",
       "err_empty_email": "Email harus diisi",
       "err_invalid_email": "Email tidak valid",
+      "err_email_not_found": "Email tidak ditemukan",
       "err_empty_password": "Password harus diisi",
       "err_short_password": "Panjang password minimal 8 karakter",
+      "err_wrong_password": "Password salah",
       "register_question": "Belum punya akun?",
       "create_here": "Buat disini"
     },

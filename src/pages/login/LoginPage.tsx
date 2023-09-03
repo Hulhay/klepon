@@ -1,16 +1,24 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import pujasKitaLogo from '../../assets/pujaskitalogo.png';
 import { validateEmailFormat } from '../../helpers';
+import { ILogin } from '../../interface';
+import { authService } from '../../service';
 import { lang } from '../../utils';
 import { ButtonLogin, Field, FormLogin } from './LoginPageStyle';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [invalidEmail, setInvalidEmail] = useState<string>('');
   const [invalidPassword, setInvalidPassword] = useState<string>('');
+  const [loginData, setLoginData] = useState<ILogin>({
+    email,
+    password,
+  });
+  const { response, error, loading, request } = authService.login(loginData);
 
   const onEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInvalidEmail('');
@@ -46,8 +54,31 @@ const Login = () => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateRequest()) return;
-    console.log({ email, password });
+    request();
   };
+
+  useEffect(() => {
+    setLoginData({
+      email,
+      password,
+    });
+  }, [email, password]);
+
+  useEffect(() => {
+    if (error?.includes('email not found')) {
+      setInvalidEmail(lang('login.err_email_not_found'));
+    }
+    if (error?.includes('wrong password')) {
+      setInvalidPassword(lang('login.err_wrong_password'));
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (response?.meta.code === 200) {
+      console.log({ response });
+      navigate('/');
+    }
+  }, [response]);
 
   return (
     <FormLogin onSubmit={onSubmit}>
@@ -71,7 +102,9 @@ const Login = () => {
         />
         <p>{invalidPassword}</p>
       </div>
-      <ButtonLogin type="submit">{lang('button.login')}</ButtonLogin>
+      <ButtonLogin type="submit" disabled={loading} className={loading ? 'loading' : ''}>
+        {loading ? lang('button.loading') : lang('button.login')}
+      </ButtonLogin>
       <p>
         {lang('login.register_question')}{' '}
         <Link to={'/register'}>{lang('login.create_here')}</Link>
