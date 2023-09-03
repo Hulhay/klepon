@@ -40,7 +40,9 @@
       "err_short_password": "Panjang password minimal 8 karakter",
       "err_password_not_match": "Password tidak cocok",
       "login_question": "Sudah punya akun?",
-      "login_here": "Masuk"
+      "login_here": "Masuk",
+      "register_success": "Register berhasil",
+      "register_success_desc": "Silakan masuk menggunakan akun yang telah didaftarkan"
     },
     "not_found": {
       "title": "Halaman yang kamu tuju tidak ditemukan",

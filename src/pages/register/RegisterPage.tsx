@@ -2,11 +2,22 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import pujasKitaLogo from '../../assets/pujaskitalogo.png';
+import { BottomSheet } from '../../components';
 import { validateEmailFormat, validatePhoneNumberFormat } from '../../helpers';
 import { IRegister } from '../../interface';
 import { authService } from '../../service';
 import { lang } from '../../utils';
-import { ButtonRegister, Field, FormRegister } from './RegisterPageStyle';
+import {
+  ButtonActionWrapper,
+  ButtonBack,
+  ButtonConfirm,
+  ButtonRegister,
+  Description,
+  Field,
+  FormRegister,
+  SuccessBottomSheet,
+} from './RegisterPageStyle';
+import SuccessIcon from './successIcon';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,6 +37,7 @@ const Register = () => {
     password,
     phoneNumber,
   });
+  const [isBtmSheet, setIsBtmSheet] = useState<boolean>(false);
   const { response, error, loading, request } = authService.register(registerData);
 
   const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,6 +112,14 @@ const Register = () => {
     request();
   };
 
+  const onClose = () => {
+    setIsBtmSheet(false);
+  };
+
+  const onConfirm = () => {
+    navigate('/login');
+  };
+
   useEffect(() => {
     setRegisterData({
       name,
@@ -120,72 +140,88 @@ const Register = () => {
 
   useEffect(() => {
     if (response?.meta.code === 200) {
-      navigate('/login');
+      setIsBtmSheet(true);
     }
   }, [response]);
 
   return (
-    <FormRegister onSubmit={onSubmit}>
-      <img src={pujasKitaLogo} alt="" />
-      <div>
-        <Field
-          placeholder={lang('register.name_placeholder')}
-          value={name}
-          onChange={onNameChange}
-          className={invalidName ? 'invalid' : ''}
-        />
-        <p>{invalidName}</p>
-      </div>
-      <div>
-        <Field
-          placeholder={lang('register.email_placeholder')}
-          value={email}
-          onChange={onEmailChange}
-          className={invalidEmail ? 'invalid' : ''}
-        />
-        <p>{invalidEmail}</p>
-      </div>
-      <div>
-        <Field
-          placeholder={lang('register.phone_number_placeholder')}
-          value={phoneNumber}
-          onChange={onPhoneNumberChange}
-          className={invalidPhoneNumber ? 'invalid' : ''}
-        />
-        <p>{invalidPhoneNumber}</p>
-      </div>
-      <div>
-        <Field
-          placeholder={lang('register.password_placeholder')}
-          value={password}
-          onChange={onPasswordChange}
-          className={invalidPassword ? 'invalid' : ''}
-          type="password"
-        />
-        <p>{invalidPassword}</p>
-      </div>
-      <div>
-        <Field
-          placeholder={lang('register.confirm_password_placeholder')}
-          value={confirmPassword}
-          onChange={onConfirmPasswordChange}
-          className={invalidConfirmPassword ? 'invalid' : ''}
-          type="password"
-        />
-        <p>{invalidConfirmPassword}</p>
-      </div>
-      <ButtonRegister
-        type="submit"
-        disabled={loading}
-        className={loading ? 'loading' : ''}
-      >
-        {loading ? lang('button.loading') : lang('button.register')}
-      </ButtonRegister>
-      <p>
-        {lang('register.login_question')}{' '}
-        <Link to={'/login'}>{lang('register.login_here')}</Link>
-      </p>
-    </FormRegister>
+    <>
+      <FormRegister onSubmit={onSubmit}>
+        <img src={pujasKitaLogo} alt="" />
+        <div>
+          <Field
+            placeholder={lang('register.name_placeholder')}
+            value={name}
+            onChange={onNameChange}
+            className={invalidName ? 'invalid' : ''}
+          />
+          <p>{invalidName}</p>
+        </div>
+        <div>
+          <Field
+            placeholder={lang('register.email_placeholder')}
+            value={email}
+            onChange={onEmailChange}
+            className={invalidEmail ? 'invalid' : ''}
+          />
+          <p>{invalidEmail}</p>
+        </div>
+        <div>
+          <Field
+            placeholder={lang('register.phone_number_placeholder')}
+            value={phoneNumber}
+            onChange={onPhoneNumberChange}
+            className={invalidPhoneNumber ? 'invalid' : ''}
+          />
+          <p>{invalidPhoneNumber}</p>
+        </div>
+        <div>
+          <Field
+            placeholder={lang('register.password_placeholder')}
+            value={password}
+            onChange={onPasswordChange}
+            className={invalidPassword ? 'invalid' : ''}
+            type="password"
+          />
+          <p>{invalidPassword}</p>
+        </div>
+        <div>
+          <Field
+            placeholder={lang('register.confirm_password_placeholder')}
+            value={confirmPassword}
+            onChange={onConfirmPasswordChange}
+            className={invalidConfirmPassword ? 'invalid' : ''}
+            type="password"
+          />
+          <p>{invalidConfirmPassword}</p>
+        </div>
+        <ButtonRegister
+          type="submit"
+          disabled={loading}
+          className={loading ? 'loading' : ''}
+        >
+          {loading ? lang('button.loading') : lang('button.register')}
+        </ButtonRegister>
+        <p>
+          {lang('register.login_question')}{' '}
+          <Link to={'/login'}>{lang('register.login_here')}</Link>
+        </p>
+      </FormRegister>
+
+      <BottomSheet active={isBtmSheet} onClose={onClose}>
+        <SuccessBottomSheet className={isBtmSheet ? 'active' : ''}>
+          <SuccessIcon />
+          <Description>
+            <p>{lang('register.register_success')}</p>
+            <p>{lang('register.register_success_desc')}</p>
+          </Description>
+          <ButtonActionWrapper>
+            <ButtonBack onClick={onClose}>{lang('button.cancel')}</ButtonBack>
+            <ButtonConfirm onClick={onConfirm}>{lang('button.login')}</ButtonConfirm>
+          </ButtonActionWrapper>
+        </SuccessBottomSheet>
+      </BottomSheet>
+    </>
   );
 };
 

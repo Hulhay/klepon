@@ -72,7 +72,6 @@ export const Description = styled.div`
   text-align: center;
   gap: 10px;
   line-height: 1.2em;
-  }
 
   p:first-child {
     font-weight: 600;
