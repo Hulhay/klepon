@@ -13,6 +13,10 @@
       "item_in_cart": "{{qty}} item",
       "items_in_cart": "{{qty}} items"
     },
+    "cart": {
+      "not_auth": "Kamu belum login",
+      "not_auth_desc": "Kamu harus login terlebih dahulu untuk melanjutkan pesanan. Login sekarang?"
+    },
     "login": {
       "email_placeholder": "email",
       "password_placeholder": "password",
@@ -60,7 +64,8 @@
       "go_ahead": "Ya, lanjut",
       "login": "Masuk",
       "register": "Daftar",
-      "loading": "Memuat..."
+      "loading": "Memuat...",
+      "yes": "Ya"
     }
   }
 }

@@ -10,3 +10,12 @@ export const setLocalStorage = (data: DataToSaveStorage) => {
   }
   return;
 };
+
+export const getLocalStorage = (key: string, parse?: boolean) => {
+  const value = localStorage.getItem(key);
+  if (parse) {
+    const parsed = JSON.parse(value as string);
+    return parsed;
+  }
+  return value;
+};
