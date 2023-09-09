@@ -43,12 +43,16 @@ const Product = () => {
           );
         })}
       </Wrapper>
-      <CartBottomSheet
-        storeUUID={storeUUID || ''}
-        products={cart.products}
-        totalItem={cart.totalItem}
-        totalPrice={cart.totalPrice}
-      />
+      {loading ? (
+        <></>
+      ) : (
+        <CartBottomSheet
+          storeUUID={storeUUID || ''}
+          products={cart.products}
+          totalItem={cart.totalItem}
+          totalPrice={cart.totalPrice}
+        />
+      )}
     </>
   );
 };
