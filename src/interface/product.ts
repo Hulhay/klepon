@@ -1,4 +1,5 @@
 import { Meta } from './baseService';
+import { ICartState } from './cart';
 
 export interface IHeaderProduct {
   storeName: string;
@@ -19,6 +20,7 @@ export interface IProduct {
   price: number;
   imageURL: string;
   isSoldOut: boolean;
+  cart: ICartState;
 }
 
 export interface GetProductsResponse {

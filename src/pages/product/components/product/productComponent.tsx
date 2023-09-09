@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 
 import storePlaceholder from '../../../../assets/store-placeholder.jpg';
@@ -18,7 +18,15 @@ import {
   Wrapper,
 } from './productComponentStyle';
 
-const ProductItem = ({ uuid, name, price, imageURL, isSoldOut, storeUUID }: IProduct) => {
+const ProductItem = ({
+  uuid,
+  name,
+  price,
+  imageURL,
+  isSoldOut,
+  storeUUID,
+  cart,
+}: IProduct) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
   const [qty, setQty] = useState<number>(0);
@@ -55,6 +63,13 @@ const ProductItem = ({ uuid, name, price, imageURL, isSoldOut, storeUUID }: IPro
     setQty((qty) => qty + 1);
     dispatch(addToCart({ uuid, qty: 1, name, price, storeUUID }));
   };
+
+  useEffect(() => {
+    const inCart = cart.products.find((product) => product.uuid === uuid);
+    if (inCart) {
+      setQty(inCart.qty);
+    }
+  }, []);
 
   return (
     <>

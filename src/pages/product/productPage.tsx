@@ -39,6 +39,7 @@ const Product = () => {
               imageURL={product.product_photo_url}
               isSoldOut={product.is_sold_out}
               storeUUID={storeUUID || ''}
+              cart={cart}
             />
           );
         })}
