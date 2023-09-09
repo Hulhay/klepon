@@ -1,4 +1,4 @@
-import { Meta } from './base-service';
+import { Meta } from './baseService';
 
 export interface IHeaderProduct {
   storeName: string;

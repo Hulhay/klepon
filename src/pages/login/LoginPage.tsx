@@ -75,7 +75,6 @@ const Login = () => {
 
   useEffect(() => {
     if (response?.meta.code === 200) {
-      console.log({ response });
       navigate('/');
     }
   }, [response]);

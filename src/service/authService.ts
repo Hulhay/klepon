@@ -1,5 +1,6 @@
 import { Method } from 'axios';
 
+import { setLocalStorage } from '../helpers';
 import { useService } from '../hooks';
 import { ILogin, IRegister, LoginResponse, RegisterResponse } from '../interface';
 
@@ -32,6 +33,18 @@ export default {
       },
       loadOnStart: false,
     });
+
+    if (response) {
+      setLocalStorage({
+        key: 'pk-auth',
+        value: response?.data,
+      });
+      setLocalStorage({
+        key: 'pk-email',
+        value: data.email,
+      });
+    }
+
     return { response, error, loading, request };
   },
 };
